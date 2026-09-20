@@ -7,11 +7,11 @@ import { StickyToc } from "@/components/sticky-toc"
 import { HeroSection } from "@/components/sections/hero-section"
 import { ExperienceSection } from "@/components/sections/experience-section"
 import { ResearchSection } from "@/components/sections/research-section"
-import { ProjectsSection } from "@/components/sections/projects-section-new"
-import { SkillsSection } from "@/components/sections/skills-section-new"
+import { ProjectsSection } from "@/components/sections/projects-section"
+import { SkillsSection } from "@/components/sections/skills-section"
 import { LeadershipSection, QualificationsSection } from "@/components/sections/profile-sections"
 import { PhotographySection } from "@/components/sections/photography-section"
-import { ContactSection } from "@/components/sections/contact-section-new"
+import { ContactSection } from "@/components/sections/contact-section"
 
 export function PortfolioPage() {
   const [locale, setLocale] = useState<Locale>("ja")
@@ -19,7 +19,12 @@ export function PortfolioPage() {
   const content = portfolioContent[locale]
 
   useEffect(() => { const stored = window.localStorage.getItem("portfolio-locale"); if (stored === "ja" || stored === "en") setLocale(stored) }, [])
-  useEffect(() => { document.documentElement.lang = locale; document.title = content.meta.title; window.localStorage.setItem("portfolio-locale", locale) }, [content.meta.title, locale])
+  useEffect(() => {
+    document.documentElement.lang = locale
+    document.title = content.meta.title
+    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", content.meta.description)
+    window.localStorage.setItem("portfolio-locale", locale)
+  }, [content.meta.description, content.meta.title, locale])
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>(".observed-section")
     const observer = new IntersectionObserver((entries) => { const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (visible?.target.id) setActiveSection(visible.target.id) }, { rootMargin: "-18% 0px -62%", threshold: [0, .2, .5] })
