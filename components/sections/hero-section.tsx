@@ -1,4 +1,4 @@
-import { ArrowDownRight, Github } from "lucide-react"
+import { ArrowDownRight, Code2 } from "lucide-react"
 import { githubUrl, type PortfolioContent } from "@/data/portfolio"
 
 export function HeroSection({ content }: { content: PortfolioContent }) {
@@ -12,7 +12,7 @@ export function HeroSection({ content }: { content: PortfolioContent }) {
           <p className="hero-summary">{content.hero.summary}</p>
           <div className="hero-links">
             <a className="primary-link" href="#experience">Experience <ArrowDownRight aria-hidden="true" /></a>
-            <a className="text-link" href={githubUrl} target="_blank" rel="noreferrer"><Github aria-hidden="true" />{content.labels.github}</a>
+            <a className="text-link" href={githubUrl} target="_blank" rel="noreferrer"><Code2 aria-hidden="true" />{content.labels.github}</a>
           </div>
         </div>
         <div className="hero-aside" aria-label="Engineering focus">
