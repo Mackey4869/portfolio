@@ -1,17 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
-
 export const metadata: Metadata = {
-  title: "portfolio | tomy_tech",
-  description: "tomy_techのポートフォリオサイト",
-  generator: 'v0.dev',
-  icons: {//ファビコン
-    icon: '\images\icon.png',
-  }
+  title: "tomy | Software Engineer",
+  description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。",
+  keywords: ["Software Engineer", "AI", "LLM", "Web Development", "TypeScript", "React"],
+  authors: [{ name: "tomy" }],
+  icons: { icon: "/images/icon.png" },
+  openGraph: { type: "website", locale: "ja_JP", alternateLocale: "en_US", title: "tomy | Software Engineer", description: "Production AI / Web Development & Computer Science Research" },
 }
 
 export default function RootLayout({
@@ -21,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className="scroll-smooth">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }
