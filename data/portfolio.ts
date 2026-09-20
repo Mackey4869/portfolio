@@ -71,11 +71,11 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       links: sharedLinks, note: "公開済み情報のみを掲載しています。個別機能や内部構成の詳細は非公開です。",
     },
     research: {
-      kicker: "02 / RESEARCH", title: "画像とAIの関係を、\nユーザー視点から考える。", status: "Ongoing Research",
-      description: "画像を扱うAI技術について、ユーザー視点の課題を対象に卒業研究を進めています。",
-      background: "画像技術と人との関わりに関心を持ち、より使いやすい仕組みに向けた検討と検証に取り組んでいます。",
-      approach: "Pythonによる画像処理とAIモデルの活用を中心に進めています。具体的な課題設定、データ、手法は未公開です。",
-      fields: ["AI", "Computer Vision", "Multimodal AI", "Python"], note: "研究成果の公開状況に合わせて、今後内容を更新します。",
+      kicker: "02 / RESEARCH", title: "一人ひとりに合うAIで、\n日常と業務をより効率的に。", status: "Ongoing Research",
+      description: "日常生活や業務の効率化を目的に、利用者に合わせて支援するAIについて卒業研究を進めています。",
+      background: "必要な支援の内容やタイミングは、人や状況によって異なります。画一的ではなく、一人ひとりに適応するAIのあり方に関心を持っています。",
+      approach: "PythonやAIモデルを用いて、利用者に合わせた支援の設計と評価に取り組んでいます。具体的な対象、データ、手法は未公開です。",
+      fields: ["Personalized AI", "Human-centered AI", "Efficiency", "Python"], note: "研究成果の公開状況に合わせて、今後内容を更新します。",
     },
     projects: {
       kicker: "03 / SELECTED PROJECT", title: "課題を見つけ、\nチームで形にする。", intro: "数を並べるのではなく、役割と工夫を説明できるプロジェクトを選んでいます。",
@@ -119,7 +119,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       engineering: [{ title: "Production", description: "Continuous improvements and fixes with real users and operating conditions in mind." }, { title: "AI Integration", description: "LLM and external API integration balancing answer quality with product experience." }, { title: "Team Development", description: "Branch-based development, pull requests, and code reviews." }],
       technologies: ["TypeScript", "React", "Vite", "Tailwind CSS", "Node.js", "Hono", "PostgreSQL", "OpenAI API", "Gemini API", "AWS", "Vitest", "Playwright"], links: sharedLinks, note: "Only publicly available information is shown. Internal architecture and unreleased features are omitted.",
     },
-    research: { kicker: "02 / RESEARCH", title: "Exploring images and AI\nfrom the user's perspective.", status: "Ongoing Research", description: "My undergraduate research broadly examines user-centered questions around image-based AI.", background: "I am interested in how people interact with image technologies and in exploring ways to make those systems more usable.", approach: "My work primarily uses Python, image processing, and AI models. Specific questions, data, and methods remain unpublished.", fields: ["AI", "Computer Vision", "Multimodal AI", "Python"], note: "This section will be updated as research outcomes become public." },
+    research: { kicker: "02 / RESEARCH", title: "Personalized AI for\nmore efficient work and life.", status: "Ongoing Research", description: "My undergraduate research explores AI that adapts to individual users to improve efficiency in everyday life and work.", background: "The right kind and timing of support differ between people and situations. I am interested in AI that adapts to each individual rather than providing uniform assistance.", approach: "Using Python and AI models, I am working on the design and evaluation of personalized support. Specific domains, data, and methods remain unpublished.", fields: ["Personalized AI", "Human-centered AI", "Efficiency", "Python"], note: "This section will be updated as research outcomes become public." },
     projects: { kicker: "03 / SELECTED PROJECT", title: "Find the problem.\nBuild the answer together.", intro: "A focused selection where I can clearly explain the problem, my role, and the engineering decisions.", items: [{ title: "Gabaithon Spring 2025", category: "Hackathon / Team Development", description: "A hackathon project where a five-person team developed a web application.", facts: ["February 2025", "Five-person team", "Rapid development"], contribution: "I participated in the project as a team member, from planning through implementation and presentation.", technologies: ["Web Application", "Team Development"], result: "Special Prize", links: [{ label: "GitHub", href: "https://github.com/sgupge2545/gabaithon202502saga2" }] }] },
     skills: { kicker: "04 / SKILLS", title: "A stack grounded\nin real experience.", intro: "Skills are organized by where I have used them, rather than by subjective percentages.", groups: [
       { title: "Frontend", description: "Responsive interfaces that help users act without hesitation.", items: [{ name: "TypeScript", level: "Professional", detail: "1+ year in React development and API integration." }, { name: "React", level: "Professional", detail: "Production feature development and improvement." }, { name: "Vite / Tailwind CSS", level: "Professional", detail: "1+ year in tooling and UI implementation." }, { name: "Next.js / Vue.js", level: "Project", detail: "Personal and team projects." }] },
