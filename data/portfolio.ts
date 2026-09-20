@@ -7,7 +7,7 @@ export type SkillGroup = { title: string; description: string; items: SkillItem[
 export type PortfolioContent = {
   meta: { title: string; description: string; updated: string }
   navigation: NavItem[]
-  labels: Record<"skip" | "menu" | "contents" | "close" | "github" | "details" | "companyOutcome" | "contribution" | "technologies", string>
+  labels: Record<"skip" | "menu" | "contents" | "close" | "language" | "github" | "details" | "companyOutcome" | "contribution" | "technologies", string>
   hero: { eyebrow: string; title: string; lead: string; summary: string; focus: string[]; availability: string }
   experience: {
     kicker: string; title: string; intro: string; company: string; role: string; period: string; service: string
@@ -16,7 +16,7 @@ export type PortfolioContent = {
     links: Array<{ label: string; href: string }>; note: string
   }
   research: { kicker: string; title: string; status: string; description: string; background: string; approach: string; fields: string[]; note: string }
-  projects: { kicker: string; title: string; intro: string; items: Array<{ title: string; category: string; description: string; facts: string[]; contribution: string; technologies: string[]; result?: string }> }
+  projects: { kicker: string; title: string; intro: string; items: Array<{ title: string; category: string; description: string; facts: string[]; contribution: string; technologies: string[]; result?: string; links?: Array<{ label: string; href: string }> }> }
   skills: { kicker: string; title: string; intro: string; groups: SkillGroup[]; engineeringTitle: string; engineering: string[] }
   qualifications: { kicker: string; title: string; achieved: string; learning: string; items: Array<{ title: string; detail: string; type: "achieved" | "learning" }> }
   leadership: { kicker: string; title: string; intro: string; items: Array<{ title: string; meta: string; description: string }> }
@@ -47,7 +47,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
   ja: {
     meta: { title: "tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.20" },
     navigation: navigation.map((id) => ({ id, label: ({ about: "About", experience: "Experience", research: "Research", projects: "Projects", skills: "Skills", qualifications: "Qualifications", leadership: "Leadership", photography: "Photography", contact: "Contact" } as Record<string, string>)[id] })),
-    labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", github: "GitHubを見る", details: "担当と技術の詳細", companyOutcome: "プロダクトの公開実績", contribution: "担当領域", technologies: "主な技術" },
+    labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", details: "担当と技術の詳細", companyOutcome: "プロダクトの公開実績", contribution: "担当領域", technologies: "主な技術" },
     hero: {
       eyebrow: "SOFTWARE ENGINEER / COMPUTER SCIENCE STUDENT",
       title: "AIを、実際に使われる\nWebプロダクトへ。",
@@ -71,15 +71,15 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       links: sharedLinks, note: "公開済み情報のみを掲載しています。個別機能や内部構成の詳細は非公開です。",
     },
     research: {
-      kicker: "02 / RESEARCH", title: "顔画像の公開判断を、\n本人ごとの違いから考える。", status: "Ongoing Research",
-      description: "顔画像に対する本人固有の公開可否判断をテーマに、卒業研究を進めています。",
-      background: "同じ画像でも、公開してよいと感じる範囲は人によって異なります。画一的な判定では捉えにくい、その個人差に着目しています。",
-      approach: "画像と本人の判断傾向を扱うAIアプローチを検討しています。未発表の実験条件・データ・手法は掲載していません。",
-      fields: ["Computer Vision", "Multimodal AI", "Privacy", "Human-centered AI"], note: "研究成果の公開状況に合わせて、今後内容を更新します。",
+      kicker: "02 / RESEARCH", title: "画像とAIの関係を、\nユーザー視点から考える。", status: "Ongoing Research",
+      description: "画像を扱うAI技術について、ユーザー視点の課題を対象に卒業研究を進めています。",
+      background: "画像技術と人との関わりに関心を持ち、より使いやすい仕組みに向けた検討と検証に取り組んでいます。",
+      approach: "Pythonによる画像処理とAIモデルの活用を中心に進めています。具体的な課題設定、データ、手法は未公開です。",
+      fields: ["AI", "Computer Vision", "Multimodal AI", "Python"], note: "研究成果の公開状況に合わせて、今後内容を更新します。",
     },
     projects: {
       kicker: "03 / SELECTED PROJECT", title: "課題を見つけ、\nチームで形にする。", intro: "数を並べるのではなく、役割と工夫を説明できるプロジェクトを選んでいます。",
-      items: [{ title: "AI Walking Route Planner", category: "Hackathon / Team Development", description: "現在地と希望条件から、歩いてみたくなるルートを提案するWebアプリ。Google MapsとAIを組み合わせ、日常の移動に新しい選択肢を加えました。", facts: ["7チーム参加", "チーム開発", "短期プロトタイピング"], contribution: "企画、Webアプリ開発、地図・AI機能の統合を担当。限られた時間で、デモ可能な体験まで実装しました。", technologies: ["JavaScript", "Google Maps API", "Generative AI", "Web API"], result: "参加者投票で過半数を獲得" }],
+      items: [{ title: "ガバイソン2025春", category: "Hackathon / Team Development", description: "5名のチームでWebアプリケーションを開発したハッカソンプロジェクトです。", facts: ["2025年2月", "5名チーム", "短期開発"], contribution: "チームメンバーとして、企画から実装・発表までの開発に参加しました。", technologies: ["Web Application", "Team Development"], result: "特別賞", links: [{ label: "GitHub", href: "https://github.com/sgupge2545/gabaithon202502saga2" }] }],
     },
     skills: {
       kicker: "04 / SKILLS", title: "経験の文脈が伝わる、\n技術スタック。", intro: "自己評価の点数ではなく、どの環境で使ったかを基準に整理しています。",
@@ -111,7 +111,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
   en: {
     meta: { title: "tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.20" },
     navigation: navigation.map((id) => ({ id, label: id.charAt(0).toUpperCase() + id.slice(1) })),
-    labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", github: "View GitHub", details: "Role and technical details", companyOutcome: "Public product outcome", contribution: "My contribution", technologies: "Core technologies" },
+    labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", details: "Role and technical details", companyOutcome: "Public product outcome", contribution: "My contribution", technologies: "Core technologies" },
     hero: { eyebrow: "SOFTWARE ENGINEER / COMPUTER SCIENCE STUDENT", title: "Turning AI into web products\npeople actually use.", lead: "I develop production AI and web services while researching image-related AI at university.", summary: "I work across frontend, APIs, and LLM integrations, improving real products through user feedback.", focus: ["Web Application", "AI / LLM", "Production Development"], availability: "Student Engineer · Japan" },
     experience: {
       kicker: "01 / PROFESSIONAL EXPERIENCE", title: "Beyond prototypes,\ninto everyday use.", intro: "At NITI Technology, I contribute to an AI-powered education product. Company outcomes and my own engineering scope are presented separately.", company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "Brest AI Academy", serviceDescription: "An AI learning web app for tutoring schools, supporting 24/7 questions, comprehension checks, and learning records.", outcome: "Planned and developed by NITI Technology, the product is in production for around 400 ninth-grade students across all 14 Brest Group locations.",
@@ -119,8 +119,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       engineering: [{ title: "Production", description: "Continuous improvements and fixes with real users and operating conditions in mind." }, { title: "AI Integration", description: "LLM and external API integration balancing answer quality with product experience." }, { title: "Team Development", description: "Branch-based development, pull requests, and code reviews." }],
       technologies: ["TypeScript", "React", "Vite", "Tailwind CSS", "Node.js", "Hono", "PostgreSQL", "OpenAI API", "Gemini API", "AWS", "Vitest", "Playwright"], links: sharedLinks, note: "Only publicly available information is shown. Internal architecture and unreleased features are omitted.",
     },
-    research: { kicker: "02 / RESEARCH", title: "Personal choices about\nsharing face images.", status: "Ongoing Research", description: "My undergraduate research explores person-specific decisions about whether face images may be shared.", background: "People can make different sharing decisions about the same image. I focus on individual differences that uniform rules cannot capture.", approach: "I am exploring AI approaches combining images with individual decision tendencies. Unpublished data, conditions, and methods are omitted.", fields: ["Computer Vision", "Multimodal AI", "Privacy", "Human-centered AI"], note: "This section will be updated as research outcomes become public." },
-    projects: { kicker: "03 / SELECTED PROJECT", title: "Find the problem.\nBuild the answer together.", intro: "A focused selection where I can clearly explain the problem, my role, and the engineering decisions.", items: [{ title: "AI Walking Route Planner", category: "Hackathon / Team Development", description: "A web app that suggests walking routes from the user's location and preferences, combining Google Maps with generative AI.", facts: ["7 teams", "Team project", "Rapid prototyping"], contribution: "I worked on the concept, web implementation, and map/AI integration, delivering a demonstrable experience within a limited timeframe.", technologies: ["JavaScript", "Google Maps API", "Generative AI", "Web API"], result: "Won a majority of participant votes" }] },
+    research: { kicker: "02 / RESEARCH", title: "Exploring images and AI\nfrom the user's perspective.", status: "Ongoing Research", description: "My undergraduate research broadly examines user-centered questions around image-based AI.", background: "I am interested in how people interact with image technologies and in exploring ways to make those systems more usable.", approach: "My work primarily uses Python, image processing, and AI models. Specific questions, data, and methods remain unpublished.", fields: ["AI", "Computer Vision", "Multimodal AI", "Python"], note: "This section will be updated as research outcomes become public." },
+    projects: { kicker: "03 / SELECTED PROJECT", title: "Find the problem.\nBuild the answer together.", intro: "A focused selection where I can clearly explain the problem, my role, and the engineering decisions.", items: [{ title: "Gabaithon Spring 2025", category: "Hackathon / Team Development", description: "A hackathon project where a five-person team developed a web application.", facts: ["February 2025", "Five-person team", "Rapid development"], contribution: "I participated in the project as a team member, from planning through implementation and presentation.", technologies: ["Web Application", "Team Development"], result: "Special Prize", links: [{ label: "GitHub", href: "https://github.com/sgupge2545/gabaithon202502saga2" }] }] },
     skills: { kicker: "04 / SKILLS", title: "A stack grounded\nin real experience.", intro: "Skills are organized by where I have used them, rather than by subjective percentages.", groups: [
       { title: "Frontend", description: "Responsive interfaces that help users act without hesitation.", items: [{ name: "TypeScript", level: "Professional", detail: "1+ year in React development and API integration." }, { name: "React", level: "Professional", detail: "Production feature development and improvement." }, { name: "Vite / Tailwind CSS", level: "Professional", detail: "1+ year in tooling and UI implementation." }, { name: "Next.js / Vue.js", level: "Project", detail: "Personal and team projects." }] },
       { title: "Backend & Data", description: "Maintainable APIs and data models behind the interface.", items: [{ name: "Node.js / Hono", level: "Professional", detail: "API development and external integrations." }, { name: "REST API", level: "Professional", detail: "6+ months of design and implementation." }, { name: "PostgreSQL / Drizzle", level: "Professional", detail: "Production and personal project data." }, { name: "Python / SQL", level: "Academic", detail: "Research, data processing, and coursework." }] },
