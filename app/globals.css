@@ -30,10 +30,10 @@ button { font: inherit; }
 .wordmark { font-size: 1.35rem; font-weight: 800; letter-spacing: -.05em; line-height: 1; }
 .wordmark span { color: var(--accent); }
 .header-actions { display: flex; align-items: center; gap: 1rem; }
-.language-switch { display: flex; align-items: center; padding: .2rem; border: 1px solid var(--line); border-radius: 999px; }
-.language-switch button { border: 0; border-radius: 999px; background: transparent; color: var(--muted); padding: .35rem .6rem; font-size: .75rem; font-weight: 800; letter-spacing: .08em; cursor: pointer; }
-.language-switch button.is-active { background: var(--ink); color: var(--white); }
-.language-switch button:hover { color: var(--ink); }
+.language-switch { display: flex; align-items: center; min-height: 2.75rem; padding: .2rem; border: 1px solid var(--line); border-radius: 999px; background: var(--white); cursor: pointer; }
+.language-switch span { border-radius: 999px; color: var(--muted); padding: .35rem .6rem; font-size: .75rem; font-weight: 800; letter-spacing: .08em; }
+.language-switch span.is-active { background: var(--ink); color: var(--white); }
+.language-switch:hover span:not(.is-active) { color: var(--ink); }
 .menu-button { width: 2.75rem; height: 2.75rem; display: none; align-items: center; justify-content: center; border: 1px solid var(--line); background: var(--white); border-radius: 50%; cursor: pointer; }
 .menu-button svg { width: 1.25rem; }
 .mobile-navigation { display: none; }
@@ -128,6 +128,10 @@ button { font: inherit; }
 .project-facts svg { width: .9rem; }
 .project-result { align-self: start; padding: 1rem; background: var(--accent-soft); color: #003ba8; display: flex; gap: .7rem; align-items: flex-start; font-size: .85rem; font-weight: 700; }
 .project-result svg { flex: 0 0 auto; width: 1.1rem; }
+.project-links { margin-top: 1.5rem; }
+.project-links a { display: inline-flex; align-items: center; gap: .45rem; color: var(--accent); font-weight: 750; }
+.project-links svg { width: 1.05rem; transition: transform .2s; }
+.project-links a:hover svg { transform: translate(2px, -2px); }
 
 .skill-groups { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); }
 .skill-group { padding: 2.25rem 0; border-bottom: 1px solid var(--line); }
@@ -200,7 +204,7 @@ button { font: inherit; }
   :root { --header-height: 4rem; }
   .header-inner { width: calc(100% - 1.25rem); }
   .header-actions { gap: .5rem; }
-  .language-switch button { padding: .3rem .48rem; }
+  .language-switch span { padding: .3rem .48rem; }
   .hero-section { min-height: auto; padding: calc(var(--header-height) + 4rem) 1rem 5rem; }
   .hero-section::before { width: 70vw; height: 70vw; right: -28vw; top: 25%; }
   .hero-section h1 { font-size: clamp(3rem, 14vw, 5rem); }

@@ -13,11 +13,16 @@ export function SiteHeader({ locale, onLocaleChange, navigation, labels }: Props
       <div className="header-inner">
         <a href="#about" className="wordmark" aria-label="tomy — top">tomy<span aria-hidden="true">.</span></a>
         <div className="header-actions">
-          <div className="language-switch" aria-label="Language">
+          <button
+            type="button"
+            className="language-switch"
+            onClick={() => onLocaleChange(locale === "ja" ? "en" : "ja")}
+            aria-label={labels.language}
+          >
             {(["ja", "en"] as const).map((item) => (
-              <button key={item} type="button" className={locale === item ? "is-active" : ""} onClick={() => onLocaleChange(item)} aria-pressed={locale === item}>{item.toUpperCase()}</button>
+              <span key={item} className={locale === item ? "is-active" : ""} aria-hidden="true">{item.toUpperCase()}</span>
             ))}
-          </div>
+          </button>
           <button type="button" className="menu-button" onClick={() => setIsOpen((open) => !open)} aria-expanded={isOpen} aria-controls="mobile-navigation" aria-label={isOpen ? labels.close : labels.menu}>
             {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
