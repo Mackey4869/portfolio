@@ -7,21 +7,21 @@ export type SkillGroup = { title: string; description: string; items: SkillItem[
 export type PortfolioContent = {
   meta: { title: string; description: string; updated: string }
   navigation: NavItem[]
-  labels: Record<"skip" | "menu" | "contents" | "close" | "language" | "github" | "details" | "companyOutcome" | "contribution" | "technologies", string>
-  hero: { eyebrow: string; title: string; lead: string; summary: string; focus: string[]; availability: string }
+  labels: Record<"skip" | "menu" | "contents" | "close" | "language" | "github" | "companyOutcome" | "contribution", string>
+  skillLevelLabels: Record<SkillItem["level"], string>
+  hero: { eyebrow: string; title: string; lead: string; summary: string; focus: string[]; availability: string; cta: string; focusLabel: string; scrollLabel: string }
   experience: {
     kicker: string; title: string; intro: string; company: string; role: string; period: string; service: string
     serviceDescription: string; outcome: string; contribution: string[]
-    engineering: Array<{ title: string; description: string }>; technologies: string[]
     links: Array<{ label: string; href: string }>; note: string
   }
-  research: { kicker: string; title: string; status: string; description: string; background: string; approach: string; fields: string[]; note: string }
+  research: { kicker: string; title: string; status: string; description: string; background: string; approach: string; fields: string[]; activitiesTitle: string; activities: string[]; note: string }
   projects: { kicker: string; title: string; intro: string; items: Array<{ title: string; category: string; description: string; facts: string[]; contribution: string; technologies: string[]; result?: string; links?: Array<{ label: string; href: string }> }> }
   skills: { kicker: string; title: string; intro: string; groups: SkillGroup[]; engineeringTitle: string; engineering: string[] }
   qualifications: { kicker: string; title: string; achieved: string; learning: string; items: Array<{ title: string; detail: string; type: "achieved" | "learning" }> }
   leadership: { kicker: string; title: string; intro: string; items: Array<{ title: string; meta: string; description: string }> }
-  photography: { kicker: string; title: string; intro: string; images: Array<{ src: string; alt: string; caption: string }> }
-  contact: { kicker: string; title: string; description: string; githubLabel: string; githubHandle: string; note: string }
+  photography: { kicker: string; title: string; intro: string; images: Array<{ src: string; alt: string; caption: string }>; links: Array<{ label: string; href: string }> }
+  contact: { kicker: string; title: string; description: string; githubLabel: string; githubHandle: string; emailLabel: string; email: string; note: string }
   footer: { updated: string; copyright: string }
 }
 
@@ -46,80 +46,75 @@ export const githubUrl = "https://github.com/Mackey4869"
 export const portfolioContent: Record<Locale, PortfolioContent> = {
   ja: {
     meta: { title: "tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.20" },
-    navigation: navigation.map((id) => ({ id, label: ({ about: "About", experience: "Experience", research: "Research", projects: "Projects", skills: "Skills", qualifications: "Qualifications", leadership: "Leadership", photography: "Photography", contact: "Contact" } as Record<string, string>)[id] })),
-    labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", details: "担当と技術の詳細", companyOutcome: "プロダクトの公開実績", contribution: "担当領域", technologies: "主な技術" },
+    navigation: navigation.map((id) => ({ id, label: ({ about: "自己紹介", experience: "実務経験", research: "研究", projects: "プロジェクト", skills: "スキル", qualifications: "資格・学習", leadership: "リーダーシップ", photography: "写真", contact: "連絡先" } as Record<string, string>)[id] })),
+    labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", companyOutcome: "公開されている導入実績", contribution: "担当したこと" },
+    skillLevelLabels: { Professional: "実務", Project: "開発経験", Academic: "研究・授業", Learning: "学習中" },
     hero: {
-      eyebrow: "SOFTWARE ENGINEER / COMPUTER SCIENCE STUDENT",
-      title: "AIを、実際に使われる\nWebプロダクトへ。",
-      lead: "実務でAI・Webサービスの開発に参画し、大学では画像とAIに関する研究に取り組んでいます。",
-      summary: "フロントエンドからAPI、LLM連携までを横断し、ユーザーの声をもとに本番プロダクトを改善してきました。",
-      focus: ["Web Application", "AI / LLM", "Production Development"], availability: "Student Engineer · Japan",
+      eyebrow: "ソフトウェアエンジニア / 情報系学生",
+      title: "WebとAIに取り組む\n学生エンジニアです。",
+      lead: "実務では教育分野のWebサービス開発に携わり、大学では写真公開前の確認作業を支援する研究に取り組んでいます。",
+      summary: "フロントエンドを中心に、バックエンドやインフラの改善も経験しています。",
+      focus: ["Web開発", "AI・機械学習", "チーム開発"], availability: "学生エンジニア・日本", cta: "実務経験を見る", focusLabel: "取り組んでいる分野", scrollLabel: "スクロール",
     },
     experience: {
-      kicker: "01 / PROFESSIONAL EXPERIENCE", title: "検証で終わらせず、\n使われ続けるところまで。",
-      intro: "NITI Technologyで、教育領域のAI/Webプロダクト開発に参画しています。会社・チームの成果と、自分が担った開発領域を分けて掲載しています。",
-      company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "ブレストAIアカデミー",
-      serviceDescription: "生徒が24時間質問でき、理解度の確認や学習記録までを支援する、学習塾向けAI学習Webアプリです。",
-      outcome: "NITI Technologyが企画・開発し、ブレストグループ全14校舎の中学3年生約400名に本番導入されています。",
-      contribution: ["React / TypeScriptを用いたWeb UIの開発・改善", "Node.js / HonoによるAPI設計・外部API連携", "LLM連携、プロンプト設計、RAG・マルチモーダルAIの活用", "ユーザーフィードバックを受けた改善、テスト、保守"],
-      engineering: [
-        { title: "Production", description: "実際の利用環境を前提に、不具合修正と継続的な改善に取り組んでいます。" },
-        { title: "AI Integration", description: "回答品質と体験の両面を意識し、LLMや外部APIをプロダクトへ組み込んでいます。" },
-        { title: "Team Development", description: "ブランチ運用、Pull Request、レビューを含むチーム開発を経験しています。" },
-      ],
-      technologies: ["TypeScript", "React", "Vite", "Tailwind CSS", "Node.js", "Hono", "PostgreSQL", "OpenAI API", "Gemini API", "AWS", "Vitest", "Playwright"],
-      links: sharedLinks, note: "公開済み情報のみを掲載しています。個別機能や内部構成の詳細は非公開です。",
+      kicker: "01 / 実務経験", title: "Webサービスの開発と、\n継続的な改善。",
+      intro: "NITI Technologyで、教育分野のWebサービス開発に携わっています。担当範囲と公開済みの概要のみを掲載しています。",
+      company: "NITI Technology", role: "ソフトウェアエンジニア", period: "継続中", service: "ブレストAIアカデミー",
+      serviceDescription: "学習塾向けAI学習Webアプリの開発・改善に携わっています。",
+      outcome: "ブレストグループ全14校舎の中学3年生約400名に本番導入されています。",
+      contribution: ["フロントエンド全般の開発・改善", "バックエンドの一部機能の実装・修正", "インフラ環境の更新・保守", "不具合の調査・修正と継続的な改善"],
+      links: sharedLinks, note: "個別機能、内部構成、使用技術の詳細は掲載していません。",
     },
     research: {
-      kicker: "02 / RESEARCH", title: "一人ひとりに合うAIで、\n日常と業務をより効率的に。", status: "Ongoing Research",
-      description: "日常生活や業務の効率化を目的に、利用者に合わせて支援するAIについて卒業研究を進めています。",
-      background: "必要な支援の内容やタイミングは、人や状況によって異なります。画一的ではなく、一人ひとりに適応するAIのあり方に関心を持っています。",
-      approach: "PythonやAIモデルを用いて、利用者に合わせた支援の設計と評価に取り組んでいます。具体的な対象、データ、手法は未公開です。",
-      fields: ["Personalized AI", "Human-centered AI", "Efficiency", "Python"], note: "研究成果の公開状況に合わせて、今後内容を更新します。",
+      kicker: "02 / 研究", title: "一人ひとりの感覚に合わせた\n写真確認支援の研究", status: "研究中",
+      description: "人物写真を公開するとき、「この写真は人に見られたくない」と感じる基準は人によって異なります。",
+      background: "少ない回答や写真例から本人の判断傾向を捉え、公開前の写真確認を支援する方法を研究しています。",
+      approach: "本人の判断を機械に置き換えるのではなく、多数の写真から確認が必要な候補を絞り込み、確認作業の負担を減らすことを目指しています。",
+      fields: ["画像分析", "機械学習", "個人に合わせた支援"], activitiesTitle: "研究で担当していること", activities: ["研究課題の整理と関連研究の調査", "写真に対する回答を収集する画面の設計", "プライバシーに配慮した画像データの管理", "少量のデータを利用する判定方法の実装", "データの分け方や評価方法の設計", "実験結果の分析と改善点の整理"], note: "本研究は現在進行中のため、実験データ、具体的な手法および結果の詳細は公開していません。",
     },
     projects: {
-      kicker: "03 / SELECTED PROJECT", title: "課題を見つけ、\nチームで形にする。", intro: "数を並べるのではなく、役割と工夫を説明できるプロジェクトを選んでいます。",
-      items: [{ title: "ガバイソン2025春", category: "Hackathon / Team Development", description: "5名のチームでWebアプリケーションを開発したハッカソンプロジェクトです。", facts: ["2025年2月", "5名チーム", "短期開発"], contribution: "チームメンバーとして、企画から実装・発表までの開発に参加しました。", technologies: ["Web Application", "Team Development"], result: "特別賞", links: [{ label: "GitHub", href: "https://github.com/sgupge2545/gabaithon202502saga2" }] }],
+      kicker: "03 / プロジェクト", title: "課題を見つけ、\nチームで形にする。", intro: "数を並べるのではなく、役割と工夫を説明できるプロジェクトを選んでいます。",
+      items: [{ title: "ガバイソン2025春", category: "ハッカソン / チーム開発", description: "5名のチームでWebアプリケーションを開発したハッカソンプロジェクトです。", facts: ["2025年2月", "5名チーム", "短期開発"], contribution: "チームメンバーとして、企画から実装・発表までの開発に参加しました。", technologies: ["Webアプリケーション", "チーム開発"], result: "特別賞", links: [{ label: "GitHub", href: "https://github.com/sgupge2545/gabaithon202502saga2" }] }],
     },
     skills: {
-      kicker: "04 / SKILLS", title: "経験の文脈が伝わる、\n技術スタック。", intro: "自己評価の点数ではなく、どの環境で使ったかを基準に整理しています。",
+      kicker: "04 / スキル", title: "経験の文脈が伝わる、\n技術スタック。", intro: "自己評価の点数ではなく、どの環境で使ったかを基準に整理しています。",
       groups: [
-        { title: "Frontend", description: "ユーザーが迷わず使える、レスポンシブなWeb UI。", items: [
+        { title: "フロントエンド", description: "ユーザーが迷わず使える、レスポンシブなWeb UI。", items: [
           { name: "TypeScript", level: "Professional", detail: "1年以上。Reactを用いたWeb開発とAPI連携。" }, { name: "React", level: "Professional", detail: "本番Webサービスの機能開発・改善。" }, { name: "Vite / Tailwind CSS", level: "Professional", detail: "1年以上。開発環境とUI実装で使用。" }, { name: "Next.js / Vue.js", level: "Project", detail: "個人・チーム開発で使用。" },
         ] },
-        { title: "Backend & Data", description: "画面の先にある、保守しやすいAPIとデータ設計。", items: [
+        { title: "バックエンド・データ", description: "画面の先にある、保守しやすいAPIとデータ設計。", items: [
           { name: "Node.js / Hono", level: "Professional", detail: "API開発、外部サービスとの連携。" }, { name: "REST API", level: "Professional", detail: "半年以上。設計・実装・デバッグを経験。" }, { name: "PostgreSQL / Drizzle", level: "Professional", detail: "本番・個人開発でのデータ管理。" }, { name: "Python / SQL", level: "Academic", detail: "研究、データ処理、授業で使用。" },
         ] },
-        { title: "AI / LLM", description: "モデル単体ではなく、プロダクトとして成立させるための実装。", items: [
+        { title: "AI・LLM", description: "モデル単体ではなく、プロダクトとして成立させるための実装。", items: [
           { name: "Prompt Engineering", level: "Professional", detail: "1年以上。用途に応じた応答設計と改善。" }, { name: "LLM Application", level: "Professional", detail: "OpenAI API・Gemini APIを使った機能開発。" }, { name: "RAG / Embedding", level: "Professional", detail: "検索と生成を組み合わせた機能開発。" }, { name: "Multimodal AI", level: "Professional", detail: "画像を扱うAI機能の開発。" },
         ] },
-        { title: "Cloud & Quality", description: "開発して終わらせず、チームで安全に運用するための技術。", items: [
+        { title: "クラウド・品質", description: "開発して終わらせず、チームで安全に運用するための技術。", items: [
           { name: "AWS", level: "Professional", detail: "S3、Lambda、RDS、CloudWatchなどを利用。" }, { name: "Git / GitHub", level: "Professional", detail: "ブランチ・PRベースのチーム開発。" }, { name: "Vitest / Playwright", level: "Professional", detail: "自動テストと品質確認。" }, { name: "Docker / CI", level: "Project", detail: "環境構築と継続的インテグレーション。" },
         ] },
-      ], engineeringTitle: "Engineering Experience", engineering: ["REST API Design", "External API Integration", "LLM Integration", "Testing & Debugging", "Agile / Scrum", "Production Maintenance"],
+      ], engineeringTitle: "開発経験", engineering: ["REST API設計", "外部API連携", "LLM連携", "テスト・デバッグ", "アジャイル・スクラム", "本番環境の保守"],
     },
-    qualifications: { kicker: "05 / QUALIFICATIONS & LEARNING", title: "基礎を固めながら、\n学び続ける。", achieved: "Qualifications", learning: "Currently Learning", items: [
+    qualifications: { kicker: "05 / 資格・学習", title: "基礎を固めながら、\n学び続ける。", achieved: "取得済み", learning: "学習中", items: [
       { title: "G検定", detail: "日本ディープラーニング協会", type: "achieved" }, { title: "TOEIC L&R 760", detail: "英語での技術情報収集にも活用", type: "achieved" }, { title: "応用情報技術者試験", detail: "体系的なCS・IT知識を学習中", type: "learning" }, { title: "AtCoder Beginner Contest", detail: "アルゴリズムとデータ構造の学習を継続", type: "learning" },
     ] },
-    leadership: { kicker: "06 / LEADERSHIP & TEACHING", title: "人を支え、\nチームを前へ進める。", intro: "開発以外でも、異なる立場の人と合意をつくり、分かりやすく伝える経験を重ねています。", items: [
+    leadership: { kicker: "06 / リーダーシップ・指導", title: "人を支え、\nチームを前へ進める。", intro: "開発以外でも、異なる立場の人と合意をつくり、分かりやすく伝える経験を重ねています。", items: [
       { title: "写真部 部長", meta: "約100名規模", description: "イベントの企画・運営、メンバー管理、企業との調整を担当。参加しやすい活動づくりに取り組みました。" }, { title: "Teaching Assistant", meta: "University", description: "演習を支援し、学生からの質問に対応。相手の理解度に合わせて技術的な内容を説明しています。" },
     ] },
-    photography: { kicker: "07 / PHOTOGRAPHY", title: "観察して、\n一瞬を切り取る。", intro: "写真は、技術とは別の角度から培ってきた観察力と表現の手段です。すべて本人が撮影しています。", images: photosJa },
-    contact: { kicker: "08 / CONTACT", title: "コードと活動は、\nGitHubで公開しています。", description: "制作物や開発の記録はGitHubから確認できます。就職活動用の連絡先は、必要に応じて後から追加できる構成にしています。", githubLabel: "GitHub profile", githubHandle: "@Mackey4869", note: "現在、連絡窓口はGitHubに集約しています。" },
+    photography: { kicker: "07 / 写真", title: "観察して、\n一瞬を切り取る。", intro: "写真は、技術とは別の角度から培ってきた観察力と表現の手段です。掲載写真は本人が撮影しています。", images: photosJa, links: [{ label: "写真部の活動を見る（Instagram）", href: "https://www.instagram.com/sagauni_photo/" }] },
+    contact: { kicker: "08 / 連絡先", title: "制作物の確認と、\nお問い合わせ。", description: "制作物や開発の記録はGitHubで公開しています。お問い合わせはメールでも受け付けています。", githubLabel: "GitHub", githubHandle: "@Mackey4869", emailLabel: "メール", email: "tomytech626@gmail.com", note: "返信には数日いただく場合があります。" },
     footer: { updated: "最終更新", copyright: "tomy. All rights reserved." },
   },
   en: {
     meta: { title: "tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.20" },
     navigation: navigation.map((id) => ({ id, label: id.charAt(0).toUpperCase() + id.slice(1) })),
-    labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", details: "Role and technical details", companyOutcome: "Public product outcome", contribution: "My contribution", technologies: "Core technologies" },
-    hero: { eyebrow: "SOFTWARE ENGINEER / COMPUTER SCIENCE STUDENT", title: "Turning AI into web products\npeople actually use.", lead: "I develop production AI and web services while researching image-related AI at university.", summary: "I work across frontend, APIs, and LLM integrations, improving real products through user feedback.", focus: ["Web Application", "AI / LLM", "Production Development"], availability: "Student Engineer · Japan" },
+    labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", companyOutcome: "Public product outcome", contribution: "My responsibilities" },
+    skillLevelLabels: { Professional: "Professional", Project: "Project", Academic: "Academic", Learning: "Learning" },
+    hero: { eyebrow: "SOFTWARE ENGINEER / COMPUTER SCIENCE STUDENT", title: "A student engineer working in\nweb development and AI.", lead: "I contribute to web service development in education and research ways to support photo review before publishing.", summary: "My work focuses on frontend development, with experience improving backend systems and infrastructure.", focus: ["Web Development", "AI / Machine Learning", "Team Development"], availability: "Student Engineer · Japan", cta: "View experience", focusLabel: "Areas of focus", scrollLabel: "Scroll" },
     experience: {
-      kicker: "01 / PROFESSIONAL EXPERIENCE", title: "Beyond prototypes,\ninto everyday use.", intro: "At NITI Technology, I contribute to an AI-powered education product. Company outcomes and my own engineering scope are presented separately.", company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "Brest AI Academy", serviceDescription: "An AI learning web app for tutoring schools, supporting 24/7 questions, comprehension checks, and learning records.", outcome: "Planned and developed by NITI Technology, the product is in production for around 400 ninth-grade students across all 14 Brest Group locations.",
-      contribution: ["Web UI development and improvement with React and TypeScript", "API design and external integrations with Node.js and Hono", "LLM integration, prompt design, RAG, and multimodal AI", "Feedback-driven iteration, testing, debugging, and maintenance"],
-      engineering: [{ title: "Production", description: "Continuous improvements and fixes with real users and operating conditions in mind." }, { title: "AI Integration", description: "LLM and external API integration balancing answer quality with product experience." }, { title: "Team Development", description: "Branch-based development, pull requests, and code reviews." }],
-      technologies: ["TypeScript", "React", "Vite", "Tailwind CSS", "Node.js", "Hono", "PostgreSQL", "OpenAI API", "Gemini API", "AWS", "Vitest", "Playwright"], links: sharedLinks, note: "Only publicly available information is shown. Internal architecture and unreleased features are omitted.",
+      kicker: "01 / PROFESSIONAL EXPERIENCE", title: "Developing and continuously\nimproving a web service.", intro: "At NITI Technology, I contribute to a web service in education. Only my broad responsibilities and publicly available information are shown.", company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "Brest AI Academy", serviceDescription: "I contribute to the development and improvement of an AI learning web app for tutoring schools.", outcome: "The service is in production for around 400 ninth-grade students across all 14 Brest Group locations.",
+      contribution: ["Frontend development and improvement", "Implementation and maintenance of selected backend features", "Infrastructure updates and maintenance", "Bug investigation, fixes, and continuous improvement"],
+      links: sharedLinks, note: "Details of individual features, internal architecture, and technologies are not disclosed.",
     },
-    research: { kicker: "02 / RESEARCH", title: "Personalized AI for\nmore efficient work and life.", status: "Ongoing Research", description: "My undergraduate research explores AI that adapts to individual users to improve efficiency in everyday life and work.", background: "The right kind and timing of support differ between people and situations. I am interested in AI that adapts to each individual rather than providing uniform assistance.", approach: "Using Python and AI models, I am working on the design and evaluation of personalized support. Specific domains, data, and methods remain unpublished.", fields: ["Personalized AI", "Human-centered AI", "Efficiency", "Python"], note: "This section will be updated as research outcomes become public." },
+    research: { kicker: "02 / RESEARCH", title: "Photo review support tailored\nto individual preferences", status: "Ongoing Research", description: "When publishing photos of people, what feels uncomfortable to share can differ from person to person.", background: "I research methods that learn an individual's preferences from a small number of responses or photo examples and support review before publication.", approach: "Rather than replacing a person's decision, the goal is to narrow down photos that may need attention and reduce the burden of reviewing a large collection.", fields: ["Image Analysis", "Machine Learning", "Personalized Support"], activitiesTitle: "My research responsibilities", activities: ["Defining the research question and reviewing related work", "Designing an interface for collecting responses to photos", "Managing image data with privacy in mind", "Implementing methods that work with limited data", "Designing data splits and evaluation methods", "Analyzing results and identifying improvements"], note: "As this research is ongoing, experimental data, specific methods, and detailed results are not publicly disclosed." },
     projects: { kicker: "03 / SELECTED PROJECT", title: "Find the problem.\nBuild the answer together.", intro: "A focused selection where I can clearly explain the problem, my role, and the engineering decisions.", items: [{ title: "Gabaithon Spring 2025", category: "Hackathon / Team Development", description: "A hackathon project where a five-person team developed a web application.", facts: ["February 2025", "Five-person team", "Rapid development"], contribution: "I participated in the project as a team member, from planning through implementation and presentation.", technologies: ["Web Application", "Team Development"], result: "Special Prize", links: [{ label: "GitHub", href: "https://github.com/sgupge2545/gabaithon202502saga2" }] }] },
     skills: { kicker: "04 / SKILLS", title: "A stack grounded\nin real experience.", intro: "Skills are organized by where I have used them, rather than by subjective percentages.", groups: [
       { title: "Frontend", description: "Responsive interfaces that help users act without hesitation.", items: [{ name: "TypeScript", level: "Professional", detail: "1+ year in React development and API integration." }, { name: "React", level: "Professional", detail: "Production feature development and improvement." }, { name: "Vite / Tailwind CSS", level: "Professional", detail: "1+ year in tooling and UI implementation." }, { name: "Next.js / Vue.js", level: "Project", detail: "Personal and team projects." }] },
@@ -129,8 +124,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     ], engineeringTitle: "Engineering Experience", engineering: ["REST API Design", "External API Integration", "LLM Integration", "Testing & Debugging", "Agile / Scrum", "Production Maintenance"] },
     qualifications: { kicker: "05 / QUALIFICATIONS & LEARNING", title: "Strong foundations,\ncontinuous learning.", achieved: "Qualifications", learning: "Currently Learning", items: [{ title: "JDLA Deep Learning for GENERAL", detail: "Japan Deep Learning Association", type: "achieved" }, { title: "TOEIC L&R 760", detail: "Also used for technical information", type: "achieved" }, { title: "Applied Information Technology Engineer", detail: "Studying structured CS and IT knowledge", type: "learning" }, { title: "AtCoder Beginner Contest", detail: "Algorithms and data structures", type: "learning" }] },
     leadership: { kicker: "06 / LEADERSHIP & TEACHING", title: "Supporting people,\nmoving teams forward.", intro: "Beyond engineering, I have learned to align different perspectives and explain technical ideas clearly.", items: [{ title: "Photography Club President", meta: "Around 100 members", description: "Led event planning, operations, member coordination, and communication with partner companies." }, { title: "Teaching Assistant", meta: "University", description: "Support exercises and student questions, adapting explanations to each learner." }] },
-    photography: { kicker: "07 / PHOTOGRAPHY", title: "Observe, then frame\nthe right moment.", intro: "Photography is another way I have developed observation and communication. Every photograph is my own work.", images: photosEn },
-    contact: { kicker: "08 / CONTACT", title: "Code and activity,\navailable on GitHub.", description: "Explore my projects and development history on GitHub. A recruiting email can be added later if needed.", githubLabel: "GitHub profile", githubHandle: "@Mackey4869", note: "GitHub is currently my primary public contact point." },
+    photography: { kicker: "07 / PHOTOGRAPHY", title: "Observe, then frame\nthe right moment.", intro: "Photography is another way I have developed observation and communication. Every photograph shown here is my own work.", images: photosEn, links: [{ label: "View photography club activities on Instagram", href: "https://www.instagram.com/sagauni_photo/" }] },
+    contact: { kicker: "08 / CONTACT", title: "Projects, code,\nand contact.", description: "My projects and development history are available on GitHub. You can also contact me by email.", githubLabel: "GitHub", githubHandle: "@Mackey4869", emailLabel: "Email", email: "tomytech626@gmail.com", note: "Please allow a few days for a reply." },
     footer: { updated: "Last updated", copyright: "tomy. All rights reserved." },
   },
 }
