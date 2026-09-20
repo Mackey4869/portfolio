@@ -1,4 +1,4 @@
-import { BookOpen, CheckCircle2, GraduationCap, Users } from "lucide-react"
+import { ArrowUpRight, BookOpen, CheckCircle2, GraduationCap, Users } from "lucide-react"
 import { SectionHeading } from "@/components/section-heading"
 import type { PortfolioContent } from "@/data/portfolio"
 
@@ -13,6 +13,6 @@ export function QualificationsSection({ content }: { content: PortfolioContent }
 export function LeadershipSection({ content }: { content: PortfolioContent }) {
   const section = content.leadership
   return <section id="leadership" className="content-section observed-section"><SectionHeading kicker={section.kicker} title={section.title} intro={section.intro} /><div className="leadership-list">{section.items.map((item, index) => (
-    <article key={item.title}><div className="leadership-icon">{index === 0 ? <Users aria-hidden="true" /> : <GraduationCap aria-hidden="true" />}</div><div><p className="mini-label">{item.meta}</p><h3>{item.title}</h3><p>{item.description}</p></div></article>
+    <article key={item.title}><div className="leadership-icon">{index === 0 ? <Users aria-hidden="true" /> : <GraduationCap aria-hidden="true" />}</div><div><p className="mini-label">{item.meta}</p><h3>{item.title}</h3><p>{item.description}</p>{item.link ? <a className="leadership-link" href={item.link.href} target="_blank" rel="noreferrer">{item.link.label}<ArrowUpRight aria-hidden="true" /></a> : null}</div></article>
   ))}</div></section>
 }
