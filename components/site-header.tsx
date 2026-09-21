@@ -11,7 +11,7 @@ export function SiteHeader({ locale, onLocaleChange, navigation, labels }: Props
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a href="#about" className="wordmark" aria-label="tomy — top">tomy<span aria-hidden="true">.</span></a>
+        <a href="#about" className="wordmark" aria-label="Mackey Tomy — top">Mackey Tomy<span aria-hidden="true">.</span></a>
         <div className="header-actions">
           <button
             type="button"

@@ -11,12 +11,12 @@ const displayFont = Noto_Serif_JP({
 })
 
 export const metadata: Metadata = {
-  title: "tomy | Software Engineer",
+  title: "Mackey Tomy | Software Engineer",
   description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。",
   keywords: ["Software Engineer", "AI", "LLM", "Web Development", "TypeScript", "React"],
-  authors: [{ name: "tomy" }],
+  authors: [{ name: "Mackey Tomy" }],
   icons: { icon: "/images/icon.png" },
-  openGraph: { type: "website", locale: "ja_JP", alternateLocale: "en_US", title: "tomy | Software Engineer", description: "Production AI / Web Development & Computer Science Research" },
+  openGraph: { type: "website", locale: "ja_JP", alternateLocale: "en_US", title: "Mackey Tomy | Software Engineer", description: "Production AI / Web Development & Computer Science Research" },
 }
 
 export default function RootLayout({

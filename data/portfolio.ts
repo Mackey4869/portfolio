@@ -45,12 +45,12 @@ export const githubUrl = "https://github.com/Mackey4869"
 
 export const portfolioContent: Record<Locale, PortfolioContent> = {
   ja: {
-    meta: { title: "tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.22" },
+    meta: { title: "Mackey Tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.22" },
     navigation: navigation.map((id) => ({ id, label: ({ about: "自己紹介", experience: "実務経験", research: "研究", projects: "プロジェクト", skills: "スキル", qualifications: "資格・学習", leadership: "リーダーシップ", photography: "写真", contact: "連絡先" } as Record<string, string>)[id] })),
     labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", companyOutcome: "公開されている導入実績", contribution: "担当" },
     skillLevelLabels: { Professional: "実務", Project: "開発経験", Academic: "研究・授業", Learning: "学習中" },
     hero: {
-      eyebrow: "ポートフォリオ / 2026", name: "tomy", role: "ソフトウェアエンジニア / 情報系学生",
+      eyebrow: "ポートフォリオ / 2026", name: "Mackey Tomy", role: "ソフトウェアエンジニア / 情報系学生",
       lead: "教育分野のWebサービス開発に携わりながら、大学で機械学習を用いた研究に取り組んでいます。",
       summary: "フロントエンドを中心に、バックエンドの一部開発、インフラ更新、不具合修正を経験しています。",
       profileLabel: "プロフィール概要", facts: [{ label: "実務", value: "教育分野のWebサービス開発" }, { label: "研究", value: "写真公開前の確認作業を支援する仕組み" }, { label: "現在", value: "学生エンジニア / 日本" }], experienceLabel: "実務経験", emailLabel: "メール",
@@ -100,14 +100,14 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     ] },
     photography: { kicker: "07 / 写真", title: "観察して、\n一瞬を切り取る。", intro: "写真は、技術とは別の角度から培ってきた観察力と表現の手段です。掲載写真は本人が撮影しています。", images: photosJa },
     contact: { kicker: "08 / 連絡先", title: "制作物の確認と、\nお問い合わせ。", description: "制作物や開発の記録はGitHubで公開しています。お問い合わせはメールでも受け付けています。", githubLabel: "GitHub", githubHandle: "@Mackey4869", emailLabel: "メール", email: "tomytech626@gmail.com", note: "返信には数日いただく場合があります。" },
-    footer: { updated: "最終更新", copyright: "tomy. All rights reserved." },
+    footer: { updated: "最終更新", copyright: "Mackey Tomy. All rights reserved." },
   },
   en: {
-    meta: { title: "tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.22" },
+    meta: { title: "Mackey Tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.22" },
     navigation: navigation.map((id) => ({ id, label: id.charAt(0).toUpperCase() + id.slice(1) })),
     labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", companyOutcome: "Public product outcome", contribution: "My responsibilities" },
     skillLevelLabels: { Professional: "Professional", Project: "Project", Academic: "Academic", Learning: "Learning" },
-    hero: { eyebrow: "PORTFOLIO / 2026", name: "tomy", role: "Software Engineer / Computer Science Student", lead: "I contribute to web service development in education while pursuing machine learning research at university.", summary: "My experience centers on frontend development, with selected backend work, infrastructure updates, and bug fixes.", profileLabel: "Profile summary", facts: [{ label: "Work", value: "Web service development in education" }, { label: "Research", value: "Supporting photo review before publication" }, { label: "Current", value: "Student Engineer / Japan" }], experienceLabel: "Experience", emailLabel: "Email" },
+    hero: { eyebrow: "PORTFOLIO / 2026", name: "Mackey Tomy", role: "Software Engineer / Computer Science Student", lead: "I contribute to web service development in education while pursuing machine learning research at university.", summary: "My experience centers on frontend development, with selected backend work, infrastructure updates, and bug fixes.", profileLabel: "Profile summary", facts: [{ label: "Work", value: "Web service development in education" }, { label: "Research", value: "Supporting photo review before publication" }, { label: "Current", value: "Student Engineer / Japan" }], experienceLabel: "Experience", emailLabel: "Email" },
     experience: {
       kicker: "01 / PROFESSIONAL EXPERIENCE", title: "Developing and continuously\nimproving a web service.", intro: "At NITI Technology, I contribute to a web service in education. Only my broad responsibilities and publicly available information are shown.", company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "Brest AI Academy", serviceDescription: "I contribute to the development and improvement of an AI learning web app for tutoring schools.", outcome: "The service is in production for around 400 ninth-grade students across all 14 Brest Group locations.",
       contribution: ["Frontend development and improvement", "Implementation and maintenance of selected backend features", "Infrastructure updates and maintenance", "Bug investigation, fixes, and continuous improvement"],
@@ -125,6 +125,6 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     leadership: { kicker: "06 / LEADERSHIP & TEACHING", title: "Supporting people,\nmoving teams forward.", intro: "Beyond engineering, I have learned to align different perspectives and explain technical ideas clearly.", items: [{ title: "Photography Club President", meta: "Around 100 members", description: "Led event planning, operations, member coordination, and communication with partner companies.", link: { label: "View club activities on Instagram", href: "https://www.instagram.com/sagauni_photo/" } }, { title: "Teaching Assistant", meta: "University", description: "Support exercises and student questions, adapting explanations to each learner." }] },
     photography: { kicker: "07 / PHOTOGRAPHY", title: "Observe, then frame\nthe right moment.", intro: "Photography is another way I have developed observation and communication. Every photograph shown here is my own work.", images: photosEn },
     contact: { kicker: "08 / CONTACT", title: "Projects, code,\nand contact.", description: "My projects and development history are available on GitHub. You can also contact me by email.", githubLabel: "GitHub", githubHandle: "@Mackey4869", emailLabel: "Email", email: "tomytech626@gmail.com", note: "Please allow a few days for a reply." },
-    footer: { updated: "Last updated", copyright: "tomy. All rights reserved." },
+    footer: { updated: "Last updated", copyright: "Mackey Tomy. All rights reserved." },
   },
 }
