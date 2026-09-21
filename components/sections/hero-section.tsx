@@ -17,6 +17,7 @@ export function HeroSection({ content }: { content: PortfolioContent }) {
         </div>
         <div className="hero-aside" aria-label={content.hero.focusLabel}>
           <p className="availability">{content.hero.availability}</p>
+          <p className="focus-heading">{content.hero.focusLabel}</p>
           <div className="focus-list">{content.hero.focus.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong></div>)}</div>
         </div>
       </div>

@@ -1,6 +1,14 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Noto_Serif_JP } from "next/font/google"
 import "./globals.css"
+
+const displayFont = Noto_Serif_JP({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["600", "700"],
+})
 
 export const metadata: Metadata = {
   title: "tomy | Software Engineer",
@@ -17,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja" className="scroll-smooth">
+    <html lang="ja" className={`scroll-smooth ${displayFont.variable}`}>
       <body>{children}</body>
     </html>
   )
