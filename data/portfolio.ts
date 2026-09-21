@@ -9,7 +9,7 @@ export type PortfolioContent = {
   navigation: NavItem[]
   labels: Record<"skip" | "menu" | "contents" | "close" | "language" | "github" | "companyOutcome" | "contribution", string>
   skillLevelLabels: Record<SkillItem["level"], string>
-  hero: { eyebrow: string; title: string; lead: string; summary: string; focus: string[]; availability: string; cta: string; focusLabel: string; scrollLabel: string }
+  hero: { eyebrow: string; name: string; role: string; lead: string; summary: string; profileLabel: string; facts: Array<{ label: string; value: string }>; experienceLabel: string; emailLabel: string }
   experience: {
     kicker: string; title: string; intro: string; company: string; role: string; period: string; service: string
     serviceDescription: string; outcome: string; contribution: string[]
@@ -50,11 +50,10 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", companyOutcome: "公開されている導入実績", contribution: "担当" },
     skillLevelLabels: { Professional: "実務", Project: "開発経験", Academic: "研究・授業", Learning: "学習中" },
     hero: {
-      eyebrow: "ソフトウェアエンジニア / 情報系学生",
-      title: "WebとAIに取り組む\n学生エンジニアです。",
-      lead: "実務では教育分野のWebサービス開発に携わり、大学では写真公開前の確認作業を支援する研究に取り組んでいます。",
-      summary: "フロントエンドを中心に、バックエンドやインフラの改善も経験しています。",
-      focus: ["Web開発", "AI・機械学習", "チーム開発"], availability: "学生エンジニア・日本", cta: "実務経験を見る", focusLabel: "取り組んでいる分野", scrollLabel: "スクロール",
+      eyebrow: "ポートフォリオ / 2026", name: "tomy", role: "ソフトウェアエンジニア / 情報系学生",
+      lead: "教育分野のWebサービス開発に携わりながら、大学で機械学習を用いた研究に取り組んでいます。",
+      summary: "フロントエンドを中心に、バックエンドの一部開発、インフラ更新、不具合修正を経験しています。",
+      profileLabel: "プロフィール概要", facts: [{ label: "実務", value: "教育分野のWebサービス開発" }, { label: "研究", value: "写真公開前の確認作業を支援する仕組み" }, { label: "現在", value: "学生エンジニア / 日本" }], experienceLabel: "実務経験", emailLabel: "メール",
     },
     experience: {
       kicker: "01 / 実務経験", title: "Webサービスの開発と、\n継続的な改善。",
@@ -108,7 +107,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     navigation: navigation.map((id) => ({ id, label: id.charAt(0).toUpperCase() + id.slice(1) })),
     labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", companyOutcome: "Public product outcome", contribution: "My responsibilities" },
     skillLevelLabels: { Professional: "Professional", Project: "Project", Academic: "Academic", Learning: "Learning" },
-    hero: { eyebrow: "SOFTWARE ENGINEER / COMPUTER SCIENCE STUDENT", title: "A student engineer working in\nweb development and AI.", lead: "I contribute to web service development in education and research ways to support photo review before publishing.", summary: "My work focuses on frontend development, with experience improving backend systems and infrastructure.", focus: ["Web Development", "AI / Machine Learning", "Team Development"], availability: "Student Engineer · Japan", cta: "View experience", focusLabel: "Areas of focus", scrollLabel: "Scroll" },
+    hero: { eyebrow: "PORTFOLIO / 2026", name: "tomy", role: "Software Engineer / Computer Science Student", lead: "I contribute to web service development in education while pursuing machine learning research at university.", summary: "My experience centers on frontend development, with selected backend work, infrastructure updates, and bug fixes.", profileLabel: "Profile summary", facts: [{ label: "Work", value: "Web service development in education" }, { label: "Research", value: "Supporting photo review before publication" }, { label: "Current", value: "Student Engineer / Japan" }], experienceLabel: "Experience", emailLabel: "Email" },
     experience: {
       kicker: "01 / PROFESSIONAL EXPERIENCE", title: "Developing and continuously\nimproving a web service.", intro: "At NITI Technology, I contribute to a web service in education. Only my broad responsibilities and publicly available information are shown.", company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "Brest AI Academy", serviceDescription: "I contribute to the development and improvement of an AI learning web app for tutoring schools.", outcome: "The service is in production for around 400 ninth-grade students across all 14 Brest Group locations.",
       contribution: ["Frontend development and improvement", "Implementation and maintenance of selected backend features", "Infrastructure updates and maintenance", "Bug investigation, fixes, and continuous improvement"],
