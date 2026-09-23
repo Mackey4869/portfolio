@@ -51,7 +51,7 @@ export const githubUrl = "https://github.com/Mackey4869"
 
 export const portfolioContent: Record<Locale, PortfolioContent> = {
   ja: {
-    meta: { title: "Mackey Tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.23" },
+    meta: { title: "Mackey Tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.24" },
     navigation: navigation.map((id) => ({ id, label: ({ about: "自己紹介", experience: "実務経験", research: "研究", projects: "プロジェクト", skills: "スキル", qualifications: "資格・学習", leadership: "リーダーシップ", photography: "写真", contact: "連絡先" } as Record<string, string>)[id] })),
     labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", companyOutcome: "導入実績", contribution: "担当" },
     skillLevelLabels: { Professional: "実務", Project: "開発経験", Academic: "研究・授業", Learning: "学習中" },
@@ -67,7 +67,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       company: "NITI Technology", role: "ソフトウェアエンジニア", period: "継続中", service: "ブレストAIアカデミー",
       serviceDescription: "学習塾向けAI学習Webアプリの開発・改善に携わっています。",
       outcome: "ブレストグループ全14校舎の中学3年生約400名に本番導入されています。",
-      contribution: ["フロントエンド全般の開発・改善", "バックエンドの一部機能の実装・修正", "インフラ環境の更新・保守", "不具合の調査・修正と継続的な改善"],
+      contribution: ["フロントエンドを中心とした開発・改善", "バックエンドの一部機能の実装・修正", "インフラ環境の更新・保守", "不具合の調査・修正と継続的な改善"],
       links: experienceLinksJa, note: "サービス概要と導入実績は公式公開情報に基づいています。個別機能、内部構成、使用技術は掲載していません。",
     },
     research: {
@@ -109,14 +109,14 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     footer: { updated: "最終更新", copyright: "Mackey Tomy. All rights reserved." },
   },
   en: {
-    meta: { title: "Mackey Tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.23" },
+    meta: { title: "Mackey Tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.24" },
     navigation: navigation.map((id) => ({ id, label: id.charAt(0).toUpperCase() + id.slice(1) })),
     labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", companyOutcome: "Public product outcome", contribution: "My responsibilities" },
     skillLevelLabels: { Professional: "Professional", Project: "Project", Academic: "Academic", Learning: "Learning" },
     hero: { eyebrow: "PORTFOLIO / 2026", name: "Mackey Tomy", role: "Software Engineer / Computer Science Student", lead: "I contribute to web service development in education while pursuing machine learning research at university.", summary: "My experience centers on frontend development, with selected backend work, infrastructure updates, and bug fixes.", profileLabel: "Profile summary", facts: [{ label: "Work", value: "Web service development in education" }, { label: "Research", value: "Supporting photo review before publication" }, { label: "Current", value: "Student Engineer / Japan" }], experienceLabel: "Experience", emailLabel: "Email" },
     experience: {
       kicker: "01", title: "Web Service Development & Improvement", intro: "At NITI Technology, I contribute to web service development in education. This section includes official public information and only the broad responsibilities I can disclose.", company: "NITI Technology", role: "Software Engineer", period: "Ongoing", service: "Brest AI Academy", serviceDescription: "I contribute to the development and improvement of an AI learning web app for tutoring schools.", outcome: "The service is in production for around 400 ninth-grade students across all 14 Brest Group locations.",
-      contribution: ["Frontend development and improvement", "Implementation and maintenance of selected backend features", "Infrastructure updates and maintenance", "Bug investigation, fixes, and continuous improvement"],
+      contribution: ["Frontend-focused development and improvement", "Implementation and maintenance of selected backend features", "Infrastructure updates and maintenance", "Bug investigation, fixes, and continuous improvement"],
       links: experienceLinksEn, note: "The service overview and deployment figures are based on official public information. Individual features, internal architecture, and technologies are not disclosed.",
     },
     research: { kicker: "02", title: "Photo Review Support Research", status: "Ongoing Research", description: "When publishing photos of people, what feels uncomfortable to share can differ from person to person.", background: "I research methods that learn an individual's preferences from a small number of responses or photo examples and support review before publication.", approach: "Rather than replacing a person's decision, the goal is to narrow down photos that may need attention and reduce the burden of reviewing a large collection.", fields: ["Image Analysis", "Machine Learning", "Personalized Support"], activitiesTitle: "What I do in this research", activities: ["Defining the research question and reviewing related work", "Designing an interface for collecting responses to photos", "Managing image data with privacy in mind", "Implementing methods that work with limited data", "Designing data splits and evaluation methods", "Analyzing results and identifying improvements"], note: "As this research is ongoing, experimental data, specific methods, and detailed results are not publicly disclosed." },
