@@ -115,7 +115,7 @@ button { font: inherit; }
 .project-list { border-top: 2px solid var(--ink); }
 .project-item { display: grid; grid-template-columns: 3rem minmax(0, 1fr) 11rem; gap: 1.5rem; padding: 2rem 0; border-bottom: 1px solid var(--line); }
 .project-number { color: var(--accent); font: 800 .75rem/1 monospace; padding-top: .4rem; }
-.project-body h3 { margin: 0 0 1rem; font-family: var(--font-story), var(--font-display), serif; font-size: clamp(1.9rem, 3vw, 2.8rem); letter-spacing: -.02em; }
+.project-body h3 { margin: 0 0 1rem; font-family: var(--font-display), "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(1.9rem, 3vw, 2.8rem); font-variant-numeric: lining-nums; letter-spacing: -.02em; }
 .project-description, .project-contribution { max-width: 700px; }
 .project-description { font-size: 1.08rem; }
 .project-contribution { color: var(--muted); }
