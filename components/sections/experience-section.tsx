@@ -14,13 +14,9 @@ export function ExperienceSection({ content }: { content: PortfolioContent }) {
         </div>
         <p className="experience-description">{experience.serviceDescription}</p>
         <div className="outcome-grid">
-          <div><p className="mini-label">{content.labels.companyOutcome}</p><p>{experience.outcome}</p></div>
-          <div><p className="mini-label">{content.labels.contribution}</p><ul className="check-list">{experience.contribution.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul></div>
+          <div className="experience-column"><p className="mini-label">{content.labels.companyOutcome}</p><p>{experience.outcome}</p><div className="external-links">{experience.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight aria-hidden="true" /></a>)}</div></div>
+          <div className="experience-column"><p className="mini-label">{content.labels.contribution}</p><ul className="check-list">{experience.contribution.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul><p className="experience-note">{experience.note}</p></div>
         </div>
-        <footer className="experience-footer">
-          <div className="external-links">{experience.links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight aria-hidden="true" /></a>)}</div>
-          <p>{experience.note}</p>
-        </footer>
       </article>
     </section>
   )
