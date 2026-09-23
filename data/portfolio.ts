@@ -45,7 +45,7 @@ export const githubUrl = "https://github.com/Mackey4869"
 
 export const portfolioContent: Record<Locale, PortfolioContent> = {
   ja: {
-    meta: { title: "Mackey Tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.22" },
+    meta: { title: "Mackey Tomy | Software Engineer", description: "AI・Webプロダクトの実務開発とコンピュータサイエンス研究に取り組む学生エンジニアのポートフォリオ。", updated: "2026.09.23" },
     navigation: navigation.map((id) => ({ id, label: ({ about: "自己紹介", experience: "実務経験", research: "研究", projects: "プロジェクト", skills: "スキル", qualifications: "資格・学習", leadership: "リーダーシップ", photography: "写真", contact: "連絡先" } as Record<string, string>)[id] })),
     labels: { skip: "本文へスキップ", menu: "メニューを開く", contents: "目次", close: "メニューを閉じる", language: "表示言語を切り替える", github: "GitHubを見る", companyOutcome: "公開されている導入実績", contribution: "担当" },
     skillLevelLabels: { Professional: "実務", Project: "開発経験", Academic: "研究・授業", Learning: "学習中" },
@@ -103,7 +103,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
     footer: { updated: "最終更新", copyright: "Mackey Tomy. All rights reserved." },
   },
   en: {
-    meta: { title: "Mackey Tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.22" },
+    meta: { title: "Mackey Tomy | Software Engineer", description: "Portfolio of a student engineer building production AI and web products while researching computer science.", updated: "2026.09.23" },
     navigation: navigation.map((id) => ({ id, label: id.charAt(0).toUpperCase() + id.slice(1) })),
     labels: { skip: "Skip to content", menu: "Open menu", contents: "Contents", close: "Close menu", language: "Switch display language", github: "View GitHub", companyOutcome: "Public product outcome", contribution: "My responsibilities" },
     skillLevelLabels: { Professional: "Professional", Project: "Project", Academic: "Academic", Learning: "Learning" },

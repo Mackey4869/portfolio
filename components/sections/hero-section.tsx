@@ -1,4 +1,4 @@
-import { ArrowDownRight, Code2, Mail } from "lucide-react"
+import { ArrowDownRight, Code2, Mail, Sparkles } from "lucide-react"
 import { githubUrl, type PortfolioContent } from "@/data/portfolio"
 
 export function HeroSection({ content }: { content: PortfolioContent }) {
@@ -6,7 +6,7 @@ export function HeroSection({ content }: { content: PortfolioContent }) {
     <section id="about" className="hero-section observed-section">
       <div className="hero-grid">
         <div className="hero-copy">
-          <p className="hero-eyebrow">{content.hero.eyebrow}</p>
+          <p className="hero-eyebrow"><Sparkles aria-hidden="true" />{content.hero.eyebrow}</p>
           <h1>{content.hero.name}</h1>
           <p className="hero-role">{content.hero.role}</p>
           <p className="hero-lead">{content.hero.lead}</p>
